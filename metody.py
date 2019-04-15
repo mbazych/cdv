@@ -59,14 +59,14 @@ while True:
                 print("Całka z x+{} wynosi {}.".format(b, wynik))
                 continue
             if a == 0 and b < 0:
-                print("Całka z x-{} wynosi {}.".format(b, wynik))
+                print("Całka z x{} wynosi {}.".format(b, wynik))
                 continue
 
             if b >= 0:
                 print("Całka z {}x+{} wynosi {}.".format(a,b,wynik))
                 continue
             if b < 0:
-                print("Całka z {}x-{} wynosi {}.".format(a,b,wynik))
+                print("Całka z {}x{} wynosi {}.".format(a,b,wynik))
 
         elif wybor == '2':
             print("")
