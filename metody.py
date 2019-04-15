@@ -42,8 +42,6 @@ while True:
             if b == 0 and a == 0:
                 print("Całka z 0 wynosi 0.")
                 continue
-            elif a == 1:
-                a = None
             elif a == 0 and b < 0:
                 print("Całka z {} wynosi -x.".format(b))
                 continue
