@@ -29,6 +29,9 @@ while True:
             while True:
                 try:
                     tmp = input("\nPodaj x%s: " % x)
+                    if float(tmp) in wezly:
+                        print("\nTę wartość już podałeś!")
+                        continue
                     wezly.append(float(tmp))
                     break
                 except:
@@ -78,7 +81,7 @@ while True:
                 ts = np.linspace(t[0],t[-1],n)
                 xLagrange = pxLagrange(ts) # lagrange x coordinates
                 yLagrange = pyLagrange(ts) # lagrange y coordinates
-                plt.plot(xLagrange, yLagrange,'b-',label = "Polynomial")
+                plt.plot(xLagrange, yLagrange,'b-',label = "Interpolacja")
                 plt.show()
 
                 break
