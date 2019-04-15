@@ -324,7 +324,7 @@ class Zalogowany(QWidget):
 
     def zmien(self, logger):
         openDirectoryDialog = QFileDialog()
-        oD = openDirectoryDialog.getOpenFileName(self, "open", "/home")
+        oD = openDirectoryDialog.getOpenFileName(self, "open", "/home/github/bank")
         self.pixmap         = QPixmap("{}".format(oD[0]))
         self.pixmap = self.pixmap.scaled(150, 150)
         self.prof.setPixmap(self.pixmap)
