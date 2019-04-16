@@ -43,11 +43,7 @@ while True:
             while True:
                 try:
                     tmp = input("\nPodaj f(x%s): " % x)
-                    if float(tmp) == wezly[x-1]:
-                        print("f(x) nie moze byc rowne x!")
-                        continue
-                    else:
-                        wartoscwezlow.append(float(tmp))
+                    wartoscwezlow.append(float(tmp))
                     break
                 except:
                     print("\nPodaj prawidłowa wartość...\n")
