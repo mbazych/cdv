@@ -1,9 +1,8 @@
 import pysftp
 import os
 import getpass
-import editor
 import sys
-
+import text_editor as editor
 
 clear = lambda: os.system('cls')
 
@@ -81,9 +80,7 @@ def conn():
                 else:
                     print(f'{sftp.pwd}/{cmd[3:]} nie istnieje!')
             elif cmd[0:4] == 'Edit':
-                if sftp.exists(cmd[5:]):
-                    naDysku = cmd[5:]
-                    sftp.get(naDysku, cmd[5:])
+                editor.edit()
 
             else:
                 print("Bledna komenda!")
