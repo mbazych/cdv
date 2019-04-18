@@ -5,11 +5,11 @@ import baza
 import main
 from validate_email import validate_email
 
+
 class Logowanie(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.interfejs()
-
 
     def interfejs(self):
         zdjecie = QLabel(self)
@@ -46,14 +46,13 @@ class Logowanie(QWidget):
 
         koniecBtn.resize(koniecBtn.sizeHint())
 
-
         ukladT.addLayout(ukladH, 3, 0, 1, 3)
-        ukladT.addWidget(koniecBtn, 4, 0 ,1, 3)
+        ukladT.addWidget(koniecBtn, 4, 0, 1, 3)
 
         self.setLayout(ukladT)
 
         self.setGeometry(500, 500, 300, 400)
-        self.setFixedSize(300,400)
+        self.setFixedSize(300, 400)
         self.setWindowTitle("System bankowy")
         self.setWindowIcon(QIcon('user.png'))
         self.show()
@@ -61,7 +60,7 @@ class Logowanie(QWidget):
     def zaloguj(self):
         loggin = self.login.text()
         hasslo = self.haslo.text()
-        if baza.sprawdzlogin(loggin, hasslo)==0:
+        if baza.sprawdzlogin(loggin, hasslo) == 0:
             self.blad()
         else:
             self.mureczek2()
@@ -98,12 +97,12 @@ class Rejestracja(QWidget):
         self.interfejs()
 
     def interfejs(self):
-        loginLabel  = QLabel("Login: ", self)
-        hasloLabel  = QLabel("Hasło: ", self)
-        imie        = QLabel("Imię: ", self)
-        nazwisko    = QLabel("Nazwisko: ", self)
-        nr_tel      = QLabel("Nr telefonu: ", self)
-        email       = QLabel("Email:", self)
+        loginLabel = QLabel("Login: ", self)
+        hasloLabel = QLabel("Hasło: ", self)
+        imie = QLabel("Imię: ", self)
+        nazwisko = QLabel("Nazwisko: ", self)
+        nr_tel = QLabel("Nr telefonu: ", self)
+        email = QLabel("Email:", self)
 
         ukladT = QGridLayout()
         ukladT.addWidget(loginLabel, 0, 0)
@@ -113,12 +112,12 @@ class Rejestracja(QWidget):
         ukladT.addWidget(nr_tel, 4, 0)
         ukladT.addWidget(email, 5, 0)
 
-        self.loginEdit      = QLineEdit()
-        self.hasloEdit      = QLineEdit()
-        self.imieEdit       = QLineEdit()
-        self.nazwiskoEdit   = QLineEdit()
-        self.nr_telEdit     = QLineEdit()
-        self.emailEdit      = QLineEdit()
+        self.loginEdit = QLineEdit()
+        self.hasloEdit = QLineEdit()
+        self.imieEdit = QLineEdit()
+        self.nazwiskoEdit = QLineEdit()
+        self.nr_telEdit = QLineEdit()
+        self.emailEdit = QLineEdit()
         self.hasloEdit.setEchoMode(QLineEdit.Password)
 
         ukladT.addWidget(self.loginEdit, 0, 1)
@@ -128,8 +127,8 @@ class Rejestracja(QWidget):
         ukladT.addWidget(self.nr_telEdit, 4, 1)
         ukladT.addWidget(self.emailEdit, 5, 1)
 
-        wrocBtn     = QPushButton("&Wróć", self)
-        stworzBtn   = QPushButton("&Stwórz konto", self)
+        wrocBtn = QPushButton("&Wróć", self)
+        stworzBtn = QPushButton("&Stwórz konto", self)
 
         wrocBtn.resize(wrocBtn.sizeHint())
         stworzBtn.resize(stworzBtn.sizeHint())
@@ -143,7 +142,7 @@ class Rejestracja(QWidget):
         self.setLayout(ukladT)
         self.setWindowIcon(QIcon('user.png'))
         self.setGeometry(500, 500, 300, 400)
-        self.setFixedSize(300,400)
+        self.setFixedSize(300, 400)
         self.setWindowTitle("Rejestracja")
         self.show()
 
@@ -155,7 +154,6 @@ class Rejestracja(QWidget):
             self.close()
         elif e.key() == Qt.Key_Return:
             self.zaloguj()
-
 
     def sprawdz(self):
         is_valid = validate_email(self.emailEdit.text())
@@ -170,11 +168,14 @@ class Rejestracja(QWidget):
         elif len(self.hasloEdit.text()) < 8 or len(self.hasloEdit.text()) > 20:
             QMessageBox.warning(self, "Błąd", "Podane hasło jest za długie lub za krótkie!")
         elif not any(x.isupper() for x in self.hasloEdit.text()):
-            QMessageBox.warning(self, "Błąd", "Hasło musi zawierać jedną wielką literę, jedną małą oraz cyfrę!")
+            QMessageBox.warning(
+                self, "Błąd", "Hasło musi zawierać jedną wielką literę, jedną małą oraz cyfrę!")
         elif not any(x.islower() for x in self.hasloEdit.text()):
-            QMessageBox.warning(self, "Błąd", "Hasło musi zawierać jedną wielką literę, jedną małą oraz cyfrę!")
+            QMessageBox.warning(
+                self, "Błąd", "Hasło musi zawierać jedną wielką literę, jedną małą oraz cyfrę!")
         elif not any(x.isdigit() for x in self.hasloEdit.text()):
-            QMessageBox.warning(self, "Błąd", "Hasło musi zawierać jedną wielką literę, jedną małą oraz cyfrę!")
+            QMessageBox.warning(
+                self, "Błąd", "Hasło musi zawierać jedną wielką literę, jedną małą oraz cyfrę!")
 
         # imie
 
@@ -203,17 +204,17 @@ class Rejestracja(QWidget):
         else:
             self.imieEdit.text().capitalize()
             self.nazwiskoEdit.text().capitalize()
-            baza.dodaj(self.loginEdit.text(), self.hasloEdit.text(), self.imieEdit.text(), self.nazwiskoEdit.text(), 0, self.nr_telEdit.text(), self.emailEdit.text())
-            QMessageBox.information(self, "Konto utworzone", "Utworzyłeś konto! Możesz się teraz zalogować")
+            baza.dodaj(self.loginEdit.text(), self.hasloEdit.text(), self.imieEdit.text(),
+                       self.nazwiskoEdit.text(), 0, self.nr_telEdit.text(), self.emailEdit.text())
+            QMessageBox.information(self, "Konto utworzone",
+                                    "Utworzyłeś konto! Możesz się teraz zalogować")
             self.powrot()
-
 
     def keyPressEvent(self, e):
         if e.key() == Qt.Key_Escape:
             self.powrot()
         elif e.key() == Qt.Key_Return:
             self.sprawdz()
-
 
     def powrot(self):
         self.child_win = Logowanie()
@@ -225,21 +226,21 @@ class Zalogowany(QWidget):
 
     def __init__(self, im, has):
         super().__init__()
-        self.im     = im
-        self.has    = has
+        self.im = im
+        self.has = has
         self.interfejs(im, has)
 
     def interfejs(self, im, has):
-        self.prof                = QLabel(self)
-        uzytkownik          = []
-        uzytkownik          = baza.sprawdzlogin(im,has)
-        self.stan_konta     = QLabel("Stan konta: {}PLN".format(uzytkownik[0][5]), self)
-        self.imienazwisko   = QLabel("{} {}".format(uzytkownik[0][3],uzytkownik[0][4]), self)
-        kwota               = QLabel("Kwota:", self)
-        logger              = uzytkownik[0][1]
-        passer              = uzytkownik[0][2]
-        self.pixmap         = QPixmap("{}".format(uzytkownik[0][8]))
-        self.pixmap         = self.pixmap.scaled(150,150)
+        self.prof = QLabel(self)
+        uzytkownik = []
+        uzytkownik = baza.sprawdzlogin(im, has)
+        self.stan_konta = QLabel("Stan konta: {}PLN".format(uzytkownik[0][5]), self)
+        self.imienazwisko = QLabel("{} {}".format(uzytkownik[0][3], uzytkownik[0][4]), self)
+        kwota = QLabel("Kwota:", self)
+        logger = uzytkownik[0][1]
+        passer = uzytkownik[0][2]
+        self.pixmap = QPixmap("{}".format(uzytkownik[0][8]))
+        self.pixmap = self.pixmap.scaled(150, 150)
         self.prof.setPixmap(self.pixmap)
 
         ukladT = QGridLayout()
@@ -251,18 +252,18 @@ class Zalogowany(QWidget):
         self.ile = QLineEdit()
         ukladT.addWidget(self.ile, 2, 2)
 
-        wplacBtn    = QPushButton("&Wpłać", self)
-        wyplacBtn   = QPushButton("&Wypłać", self)
-        infoBtn     = QPushButton("&Pokaż informacje", self)
-        wylogujBtn  = QPushButton("&Wyloguj", self)
-        zamknijBtn  = QPushButton("&Zamknij konto", self)
-        zmienBtn    = QPushButton("Zmień zdjęcie")
+        wplacBtn = QPushButton("&Wpłać", self)
+        wyplacBtn = QPushButton("&Wypłać", self)
+        infoBtn = QPushButton("&Pokaż informacje", self)
+        wylogujBtn = QPushButton("&Wyloguj", self)
+        zamknijBtn = QPushButton("&Zamknij konto", self)
+        zmienBtn = QPushButton("Zmień zdjęcie")
 
         wplacBtn.clicked.connect(lambda: self.wplac(logger, passer))
         wyplacBtn.clicked.connect(lambda: self.wyplac(logger, passer))
         infoBtn.clicked.connect(lambda: self.info(uzytkownik))
         wylogujBtn.clicked.connect(self.wyloguj)
-        zamknijBtn.clicked.connect(lambda: self.zamknij(logger,passer))
+        zamknijBtn.clicked.connect(lambda: self.zamknij(logger, passer))
         zmienBtn.clicked.connect(lambda: self.zmien(logger))
 
         wplacBtn.resize(wplacBtn.sizeHint())
@@ -285,7 +286,6 @@ class Zalogowany(QWidget):
         self.setWindowTitle("System Bankowy")
         self.show()
 
-
     def wplac(self, logger, passer):
         kwota = self.ile.text()
         if baza.wplac(kwota, logger, passer) == 1:
@@ -293,7 +293,6 @@ class Zalogowany(QWidget):
         else:
             QMessageBox.information(self, "Sukces", "Wpłaciłeś {}PLN".format(kwota))
             self.stan_konta.setText("Stan konta: {}PLN".format(baza.update(0, logger, passer)))
-
 
     def wyplac(self, logger, passer):
         kwota = self.ile.text()
@@ -303,10 +302,9 @@ class Zalogowany(QWidget):
             QMessageBox.information(self, "Sukces", "Wypłaciłeś {}PLN".format(kwota))
             self.stan_konta.setText("Stan konta: {}PLN".format(baza.update(0, logger, passer)))
 
-
     def info(self, uzytkownik):
-            QMessageBox.information(self, "Informacje", "Login: %s<br>Imię: %s<br>Nazwisko: %s<br>Stan konta: %s<br>Numer telefonu: %s<br>E-mail: %s" % (uzytkownik[0][1],uzytkownik[0][3],uzytkownik[0][4],uzytkownik[0][5],uzytkownik[0][6],uzytkownik[0][7]))
-
+        QMessageBox.information(self, "Informacje", "Login: %s<br>Imię: %s<br>Nazwisko: %s<br>Stan konta: %s<br>Numer telefonu: %s<br>E-mail: %s" %
+                                (uzytkownik[0][1], uzytkownik[0][3], uzytkownik[0][4], uzytkownik[0][5], uzytkownik[0][6], uzytkownik[0][7]))
 
     def zamknij(self, logger, passer):
         odp = QMessageBox.question(
@@ -315,21 +313,19 @@ class Zalogowany(QWidget):
             QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
 
         if odp == QMessageBox.Yes:
-            baza.zamknij(logger,passer)
+            baza.zamknij(logger, passer)
             QMessageBox.information(self, "Sukces", "Twoje konto zostało usunięte!")
             self.wyloguj()
         else:
             return
 
-
     def zmien(self, logger):
         openDirectoryDialog = QFileDialog()
         oD = openDirectoryDialog.getOpenFileName(self, "open", "/home/github/bank")
-        self.pixmap         = QPixmap("{}".format(oD[0]))
+        self.pixmap = QPixmap("{}".format(oD[0]))
         self.pixmap = self.pixmap.scaled(150, 150)
         self.prof.setPixmap(self.pixmap)
         baza.zmien(logger, str(oD[0]))
-
 
     def wyloguj(self):
         self.child_win = Logowanie()
