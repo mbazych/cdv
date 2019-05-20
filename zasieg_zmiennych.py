@@ -47,7 +47,7 @@ for i in range(1,11):
 lista = ['dziura', 'mala', 'agafg', 'asdg', 'asd', 'adsg', 'quit', 'afgjafjg', 'afhghh']
 
 for i in lista:
-    if i == 'q' or i == 'quit' or i == 'exit':
+    if i == 'q' or i == 'quit' or i == 'exit' or i == 'end':
         break
     else:
         print(i)
