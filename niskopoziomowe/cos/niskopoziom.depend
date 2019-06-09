@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1558355514 source:c:\c\niskopoziom\main.c
+	<stdio.h>
+	<stdlib.h>
+
